@@ -15,6 +15,7 @@ public class Astronaut {
     public int width;
     public int height;
     public boolean isAlive;            //a boolean to denote if the hero is alive or dead.
+    public Rectangle rec;
 
 
     // METHOD DEFINITION SECTION
@@ -28,11 +29,12 @@ public class Astronaut {
     public Astronaut(int pXpos, int pYpos) {
         xpos = pXpos;
         ypos = pYpos;
-        dx = 1;
-        dy = 1;
+        dx = 8; //direction and speed, left and right
+        dy = 8; //slope
         width = 100;
         height = 100;
         isAlive = true;
+        rec = new Rectangle(xpos, ypos, width, height);
  
     } // constructor
 
@@ -40,9 +42,76 @@ public class Astronaut {
     public void move() {
         xpos = xpos + dx;
         ypos = ypos + dy;
- 
+
+        rec = new Rectangle(xpos, ypos, width, height);
+
+
     }
-}
+
+    public void bounce(){
+
+            //bounce off the east wall
+            if(xpos>950){
+            dx = -dx;
+            }
+
+            //bounce of the West Wall
+            if(xpos<0){
+                dx=-dx;
+            }
+            //bounce of the South Wall
+            if(ypos>650) {
+                dy = -dy;
+
+            }
+
+            //bounce of the North Wall
+            if(ypos<0){
+                dy=-dy;
+            }
+
+                xpos = xpos + dx;
+                ypos = ypos + dy;
+
+        rec = new Rectangle(xpos, ypos, width, height);
+
+
+    }
+
+            public void wrap(){
+                //hits the east wall
+
+                if (xpos > 950){
+                    xpos = 0;
+                }
+
+                //hits the west wall
+
+                if (xpos < 0){
+                    xpos = 950;
+                }
+
+                //hits the south wall
+                if (ypos > 650) {
+                    ypos = 0;
+                }
+
+                //hits the north wall
+                if (ypos < 0){
+                    ypos = 650;
+                }
+
+                xpos = xpos + dx;
+                ypos = ypos + dy;
+
+                rec = new Rectangle(xpos, ypos, width, height);
+
+            }
+
+    }
+
+
+
 
 
 

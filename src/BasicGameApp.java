@@ -39,10 +39,13 @@ public class BasicGameApp implements Runnable {
    
 	public BufferStrategy bufferStrategy;
 	public Image astroPic;
+	public Image astro2Pic;
+	public Image backgroundPic;
 
    //Declare the objects used in the program
    //These are things that are made up of more than one variable type
 	private Astronaut astro;
+	private Astronaut astro2;
 
 
    // Main method definition
@@ -64,7 +67,10 @@ public class BasicGameApp implements Runnable {
       //variable and objects
       //create (construct) the objects needed for the game and load up 
 		astroPic = Toolkit.getDefaultToolkit().getImage("astronaut.png"); //load the picture
-		astro = new Astronaut(10,100);
+		astro2Pic = Toolkit.getDefaultToolkit().getImage("astronaut2.png"); //load the picture
+		backgroundPic = Toolkit.getDefaultToolkit().getImage("SpaceBackgroundPhoto.png"); //load the picture
+		astro = new Astronaut(200,500);
+		astro2 = new Astronaut(500,600);
 
 
 	}// BasicGameApp()
@@ -92,10 +98,22 @@ public class BasicGameApp implements Runnable {
 	public void moveThings()
 	{
       //calls the move( ) code in the objects
-		astro.move();
+		collisions();
+		astro.bounce();
+		astro2.wrap();
 
 	}
-	
+
+	public void collisions(){
+		if(astro.rec.intersects(astro2.rec)){
+			System.out.println("explosion!!!!!!!");
+			astro.dx = -astro.dx;
+			astro.dy = -astro.dy;
+			astro2.dx = -astro.dx;
+			astro2.dy = -astro2.dy;
+		}
+	}
+
    //Pauses or sleeps the computer for the amount specified in milliseconds
    public void pause(int time ){
    		//sleep
@@ -142,8 +160,15 @@ public class BasicGameApp implements Runnable {
 		Graphics2D g = (Graphics2D) bufferStrategy.getDrawGraphics();
 		g.clearRect(0, 0, WIDTH, HEIGHT);
 
-      //draw the image of the astronaut
+		g.drawImage(backgroundPic, 0, 0, WIDTH, HEIGHT, null);
+
+		//draw the image of the astronaut
+
 		g.drawImage(astroPic, astro.xpos, astro.ypos, astro.width, astro.height, null);
+		g.drawImage(astro2Pic, astro2.xpos, astro2.ypos, astro2.width, astro2.height, null);
+
+
+
 
 		g.dispose();
 
