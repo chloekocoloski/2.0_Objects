@@ -112,6 +112,12 @@ public class BasicGameApp implements Runnable {
 			astro2.dx = -astro.dx;
 			astro2.dy = -astro2.dy;
 		}
+		if(astro.rec.intersects(astro2.rec)){
+			astro2.dx = astro.dx + 1;
+			astro2.dy = astro.dy + 1;
+			astro.width = astro.width + 1;
+			astro.height = astro.height + 1;
+		}
 	}
 
    //Pauses or sleeps the computer for the amount specified in milliseconds
