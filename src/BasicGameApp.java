@@ -105,19 +105,26 @@ public class BasicGameApp implements Runnable {
 	}
 
 	public void collisions(){
-		if(astro.rec.intersects(astro2.rec)){
+		if(astro.rec.intersects(astro2.rec) && astro.isCrashing == false){
 			System.out.println("explosion!!!!!!!");
 			astro.dx = -astro.dx;
 			astro.dy = -astro.dy;
 			astro2.dx = -astro.dx;
 			astro2.dy = -astro2.dy;
+			astro.width = astro.width + 50;
+			astro.height = astro.height + 50;
+			astro2.dx = astro2.dx + 50;
+			astro2.dy = astro2.dy + 50;
+			astro.isCrashing = true;
+
 		}
-		if(astro.rec.intersects(astro2.rec)){
-			astro2.dx = astro.dx + 1;
-			astro2.dy = astro.dy + 1;
-			astro.width = astro.width + 1;
-			astro.height = astro.height + 1;
+
+		if(!astro.rec.intersects(astro2.rec)){
+			astro.isCrashing = false;
 		}
+
+
+
 	}
 
    //Pauses or sleeps the computer for the amount specified in milliseconds
