@@ -95,9 +95,13 @@ public class BasicGameApp implements Runnable {
 	}
 
 
-	public void moveThings()
-	{
-      //calls the move( ) code in the objects
+	public void moveThings() {
+//      //calls the move( ) code in the objects
+//		if(astro2.xpos>500){
+//			astro2.isAlive = false;
+//			System.out.println("oops");
+//		}
+
 		collisions();
 		astro.bounce();
 		astro2.wrap();
@@ -105,16 +109,17 @@ public class BasicGameApp implements Runnable {
 	}
 
 	public void collisions(){
-		if(astro.rec.intersects(astro2.rec) && astro.isCrashing == false){
+		if(astro.rec.intersects(astro2.rec) && astro.isCrashing == false && astro.isAlive && astro2.isAlive){
 			System.out.println("explosion!!!!!!!");
 			astro.dx = -astro.dx;
 			astro.dy = -astro.dy;
 			astro2.dx = -astro.dx;
 			astro2.dy = -astro2.dy;
-			astro.width = astro.width + 50;
-			astro.height = astro.height + 50;
-			astro2.dx = astro2.dx + 50;
-			astro2.dy = astro2.dy + 50;
+			astro2.isAlive = false;
+			astro.width = astro.width + 30;
+			astro.height = astro.height + 30;
+			astro2.dx = astro2.dx + 30;
+			astro2.dy = astro2.dy + 30;
 			astro.isCrashing = true;
 
 		}
@@ -178,7 +183,10 @@ public class BasicGameApp implements Runnable {
 		//draw the image of the astronaut
 
 		g.drawImage(astroPic, astro.xpos, astro.ypos, astro.width, astro.height, null);
-		g.drawImage(astro2Pic, astro2.xpos, astro2.ypos, astro2.width, astro2.height, null);
+
+		if(astro2.isAlive == true) {
+			g.drawImage(astro2Pic, astro2.xpos, astro2.ypos, astro2.width, astro2.height, null);
+		}
 
 
 
