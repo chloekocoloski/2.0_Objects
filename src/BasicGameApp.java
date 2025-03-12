@@ -13,6 +13,8 @@
 
 //Graphics Libraries
 import java.awt.Graphics2D;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.awt.image.BufferStrategy;
 import java.awt.*;
 import javax.swing.JFrame;
@@ -22,9 +24,27 @@ import javax.swing.JPanel;
 //*******************************************************************************
 // Class Definition Section
 
-public class BasicGameApp implements Runnable {
+//step 1: add KeyListener to the implements
+public class BasicGameApp implements Runnable, KeyListener {
+	@Override
+	public void keyTyped(KeyEvent e) { //don't use this one we don't know what it does
 
-   //Variable Definition Section
+	}
+
+	@Override
+	public void keyPressed(KeyEvent e) {
+		System.out.println("pressed?");
+		System.out.println(e.getKeyChar());
+		System.out.println(e.getKeyCode());
+
+		//homework: identify the key codes for up, down, left, right arrow keys.
+	}
+
+	@Override
+	public void keyReleased(KeyEvent e) {
+
+	}
+//Variable Definition Section
    //Declare the variables used in the program 
    //You can set their initial values too
    
@@ -66,9 +86,9 @@ public class BasicGameApp implements Runnable {
        
       //variable and objects
       //create (construct) the objects needed for the game and load up 
-		astroPic = Toolkit.getDefaultToolkit().getImage("Clownfish.jpeg"); //load the picture
-		astro2Pic = Toolkit.getDefaultToolkit().getImage("Goldfish.jpg"); //load the picture
-		backgroundPic = Toolkit.getDefaultToolkit().getImage("Underwater.Background.png"); //load the picture
+		astroPic = Toolkit.getDefaultToolkit().getImage("astronaut.png"); //load the picture
+		astro2Pic = Toolkit.getDefaultToolkit().getImage("astronaut2.png"); //load the picture
+		backgroundPic = Toolkit.getDefaultToolkit().getImage("no picture rn"); //load the picture
 		astro = new Astronaut(200,500);
 		astro2 = new Astronaut(500,600);
 
@@ -155,8 +175,10 @@ public class BasicGameApp implements Runnable {
       canvas = new Canvas();  
       canvas.setBounds(0, 0, WIDTH, HEIGHT);
       canvas.setIgnoreRepaint(true);
-   
-      panel.add(canvas);  // adds the canvas to the panel.
+
+	  //step 2:  add key listener to canvas as this
+	   canvas.addKeyListener(this);
+	   panel.add(canvas);  // adds the canvas to the panel.
    
       // frame operations
       frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);  //makes the frame close and exit nicely
@@ -195,4 +217,6 @@ public class BasicGameApp implements Runnable {
 
 		bufferStrategy.show();
 	}
+
+	//step 3: add methods keyReleased, keyPressed, and keyTyped
 }
