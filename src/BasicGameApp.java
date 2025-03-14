@@ -38,7 +38,38 @@ public class BasicGameApp implements Runnable, KeyListener {
 		System.out.println(e.getKeyCode());
 
 		//homework: identify the key codes for up, down, left, right arrow keys.
+		//up: 38
+		if(e.getKeyCode() == 38){
+			System.out.println("going up");
+			astro.up = true;
+			astro.down = false;
+		}
+		//down: 40
+		if(e.getKeyCode() == 40){
+			System.out.println("going down");
+			astro.down = true;
+			astro.up = false;
+		}
+		//left: 37
+		if(e.getKeyCode() == 37){
+			System.out.println("going left");
+			astro.left = true;
+			astro.right = false;
+		}
+		//right: 39
+		if(e.getKeyCode() == 39){
+			System.out.println("going right");
+			astro.right = true;
+			astro.left = false;
+		}
+		//diagonal
+		if(e.getKeyCode() == 38 & e.getKeyCode() == 37){
+			System.out.println("diagonal");
+			astro.dy = -5;
+			astro.dx = -5;
+		}
 	}
+
 
 	@Override
 	public void keyReleased(KeyEvent e) {
