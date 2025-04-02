@@ -37,42 +37,67 @@ public class BasicGameApp implements Runnable, KeyListener {
 		System.out.println(e.getKeyChar());
 		System.out.println(e.getKeyCode());
 
-		//homework: identify the key codes for up, down, left, right arrow keys.
 		//up: 38
+		//down: 40
+		//left: 37
+		//right: 39
+
+		//todo: make an if statement that checks if we released up key and sets astros up to false
+
+		//moving up
 		if(e.getKeyCode() == 38){
-			System.out.println("going up");
+			astro.up = false;
+		}
+		//moving down
+		if(e.getKeyCode() == 40){
+			astro.down = false;
+		}
+		//moving left
+		if(e.getKeyCode() == 37){
+			astro.left = false;
+		}
+		//moving right
+		if(e.getKeyCode() == 39){
+			astro.right = false;
+		}
+
+		//moving up
+		if(e.getKeyCode() == 38){
+			System.out.println("up");
 			astro.up = true;
 			astro.down = false;
 		}
-		//down: 40
+		//moving down
 		if(e.getKeyCode() == 40){
-			System.out.println("going down");
+			System.out.println("down");
 			astro.down = true;
 			astro.up = false;
 		}
-		//left: 37
+		//moving left
 		if(e.getKeyCode() == 37){
-			System.out.println("going left");
+			System.out.println("left");
 			astro.left = true;
 			astro.right = false;
 		}
-		//right: 39
+		//moving right
 		if(e.getKeyCode() == 39){
-			System.out.println("going right");
+			System.out.println("right");
 			astro.right = true;
 			astro.left = false;
 		}
 		//diagonal
-		if(e.getKeyCode() == 38 & e.getKeyCode() == 37){
-			System.out.println("diagonal");
-			astro.dy = -5;
-			astro.dx = -5;
-		}
+//		if(e.getKeyCode() == 38 & e.getKeyCode() == 37){
+//			System.out.println("diagonal");
+//			astro.dy = -5;
+//			astro.dx = -5;
+//		}
 	}
 
 
 	@Override
 	public void keyReleased(KeyEvent e) {
+		System.out.println("released?");
+		System.out.println(e.getKeyChar());
 
 	}
 //Variable Definition Section

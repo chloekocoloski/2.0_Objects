@@ -60,11 +60,22 @@ public class Astronaut {
     }
 
     public void bounce(){
-
+        //moving up
         if (up == true){
             dy = -5;
         }
-
+        //moving down
+        if(down == true){
+            dy = 5;
+        }
+        //moving left
+        if(left == true){
+            dx = -5;
+        }
+        //moving right
+        if(right == true){
+            dx = 5;
+        }
             //bounce off the east wall
             if(xpos>950){
             dx = -dx;
