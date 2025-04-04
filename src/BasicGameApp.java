@@ -44,22 +44,7 @@ public class BasicGameApp implements Runnable, KeyListener {
 
 		//todo: make an if statement that checks if we released up key and sets astros up to false
 
-		//moving up
-		if(e.getKeyCode() == 38){
-			astro.up = false;
-		}
-		//moving down
-		if(e.getKeyCode() == 40){
-			astro.down = false;
-		}
-		//moving left
-		if(e.getKeyCode() == 37){
-			astro.left = false;
-		}
-		//moving right
-		if(e.getKeyCode() == 39){
-			astro.right = false;
-		}
+
 
 		//moving up
 		if(e.getKeyCode() == 38){
@@ -85,12 +70,8 @@ public class BasicGameApp implements Runnable, KeyListener {
 			astro.right = true;
 			astro.left = false;
 		}
-		//diagonal
-//		if(e.getKeyCode() == 38 & e.getKeyCode() == 37){
-//			System.out.println("diagonal");
-//			astro.dy = -5;
-//			astro.dx = -5;
-//		}
+
+
 	}
 
 
@@ -99,6 +80,22 @@ public class BasicGameApp implements Runnable, KeyListener {
 		System.out.println("released?");
 		System.out.println(e.getKeyChar());
 
+		//moving up
+		if(e.getKeyCode() == 38){
+			astro.up = false;
+		}
+		//moving down
+		if(e.getKeyCode() == 40){
+			astro.down = false;
+		}
+		//moving left
+		if(e.getKeyCode() == 37){
+			astro.left = false;
+		}
+		//moving right
+		if(e.getKeyCode() == 39){
+			astro.right = false;
+		}
 	}
 //Variable Definition Section
    //Declare the variables used in the program 
