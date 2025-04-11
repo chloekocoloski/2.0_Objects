@@ -44,7 +44,6 @@ public class BasicGameApp implements Runnable, KeyListener {
 
 		//todo: make an if statement that checks if we released up key and sets astros up to false
 
-		System.out.println("confused");
 
 
 		//moving up
@@ -210,6 +209,13 @@ for(int x = 0; x <astronautsArray.length; x++) {
 
 		if(!astro.rec.intersects(astro2.rec)){
 			astro.isCrashing = false;
+		}
+
+		for(int b = 0; b < astronautsArray.length; b++){
+			if(astro.rec.intersects(astronautsArray[b].rec)){
+				System.out.println("crashing");
+
+			}
 		}
 
 
