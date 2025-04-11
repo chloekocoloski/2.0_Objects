@@ -44,6 +44,7 @@ public class BasicGameApp implements Runnable, KeyListener {
 
 		//todo: make an if statement that checks if we released up key and sets astros up to false
 
+		System.out.println("confused");
 
 
 		//moving up
